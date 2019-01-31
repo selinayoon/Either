@@ -1,0 +1,14 @@
+{% extends "choice/base.html" %}
+
+{% block bodyblock %}
+    <form action="/choices/{{question.id}}/update/" method="post">
+        {% csrf_token %}
+        Title:<input type="text" name="title" value="{{question.title}}"/>
+        c1:<input type="text" name="c1" value="{{question.c1}}"/>
+        c2:<input type="text" name="c2" value="{{question.c2}}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    
+    
+{% endblock %}

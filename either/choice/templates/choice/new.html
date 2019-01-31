@@ -1,0 +1,11 @@
+{% extends "choice/base.html" %}
+
+{% block bodyblock %}
+    <form action="/choices/create/" method="post">
+        {% csrf_token %}
+        Title:<input type="text" name="title"/>
+        c1:<input type="text" name="c1"/>
+        c2:<input type="text" name="c2"/>
+        <input type="submit" value="Submit"/>
+    </form>
+{% endblock %}

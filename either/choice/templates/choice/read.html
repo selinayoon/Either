@@ -1,0 +1,25 @@
+{% extends "choice/base.html" %}
+
+{% block bodyblock %}
+    <h3>{{question.title}}</h3>
+    <h3>{{question.c1}} VS {{question.c2}}</h3>
+    <hr>
+    <a href="/choices/{{question.id}}/delete/">삭제</a>
+    <a href="/choices/{{question.id}}/edit/">수정</a>
+    
+    
+    <form action="/choices/{{question.id}}/comment/create/" method="post">
+        {% csrf_token %}
+        <input class type="radio" name="c" value="1">{{question.c1}}</input>
+        <input class type="radio" name="c" value="2">{{question.c2}}</input>
+        <h1>{{question.c1Cnt}}  {{question.c2Cnt}}</h1>
+        <input type="text" name="content"/>
+        <input type="submit" />
+    </form>
+    
+    {% for comment in question.comment_set.all %}
+        <h4>{{comment.content}}</h4>
+    {% endfor %}
+    
+    
+{% endblock %}
